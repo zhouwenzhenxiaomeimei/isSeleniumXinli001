@@ -28,7 +28,7 @@ import java.util.Properties;
 
         String chrome= System.getenv("currentBrowser");
        logger.info("浏览器是"+chrome);
-        driver=getDriver("chrome");
+        driver=getDriver(chrome);
         System.out.println(System.getProperty("user.home") );
 
 
