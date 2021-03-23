@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import testcase.SearchTest;
+
 
 import java.io.*;
 import java.util.Properties;
@@ -27,7 +27,7 @@ import java.util.Properties;
     public static void init(){
 
         String chrome= System.getenv("currentBrowser");
-        logger.info("浏览器是"+chrome);
+       logger.info("浏览器是"+chrome);
         driver=getDriver(chrome);
         System.out.println(System.getProperty("user.home") );
 
