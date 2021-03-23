@@ -22,7 +22,9 @@ import java.util.Properties;
     @BeforeAll
     public static void init(){
 
-        driver=getDriver("chrome");
+        String chrome= System.getenv("currentBrowser");
+        driver=getDriver(chrome);
+        System.out.println(System.getProperty("user.home") );
 
 
 
@@ -39,17 +41,28 @@ import java.util.Properties;
 
     private static WebDriver  getDriver(String curBrowser){
         WebDriver driver = null;
-        if(curBrowser.equalsIgnoreCase("chrome")){
+        if(curBrowser!=null&&curBrowser.equalsIgnoreCase("chrome")){
             String chrome_path=getProperties("CHROME_PATH");
             System.setProperty("webdriver.chrome.driver", chrome_path);
+            //ChromeOptions chromeOptions = new ChromeOptions();
+
+           // chromeOptions.setBinary(chrome_path);
             driver = new ChromeDriver();
-        }else if(curBrowser.equalsIgnoreCase("nogui")){
+        }else if(curBrowser!=null&&curBrowser.equalsIgnoreCase("nogui")){
              String chrome_path=getProperties("CHROME_PATH");
              System.setProperty("webdriver.chrome.driver", chrome_path);
-             driver = new ChromeDriver();
+             ChromeOptions chromeOptions = new ChromeOptions();
+             chromeOptions.addArguments("--headless"); //静默模式
+             //chromeOptions.setBinary("D:\\chromedriver_win32_1\\chromedriver.exe");
+             driver = new ChromeDriver(chromeOptions);
+
+        }else {
+            String chrome_path=getProperties("CHROME_PATH");
+            System.setProperty("webdriver.chrome.driver", chrome_path);
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.addArguments("--headless"); //静默模式
-
+            //chromeOptions.setBinary("D:\\chromedriver_win32_1\\chromedriver.exe");
+            driver = new ChromeDriver(chromeOptions);
         }
 
         return driver ;

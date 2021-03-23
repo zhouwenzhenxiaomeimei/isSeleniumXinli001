@@ -31,7 +31,7 @@ public class WebSearchTask {
     public static void inputText(WebDriver driver,String keyword){
         WebElement e =findElementByName(driver,"keyword");
         e.sendKeys(keyword);
-        logger.info("输入搜索内容");
+        logger.info("输入搜索内容"+"["+keyword+"]");
     }
 
     public static void clickSearchButton(WebDriver driver){
