@@ -58,7 +58,7 @@ class SearchTest extends WebUIBase {
          WebSearchTask.wait(5);
 
          // 验证搜索结果
-         WebSearchTask.assertSearchResult(driver,keyword);
+         WebSearchTask.assertSearchResult(driver,"花朵");
 
 
 
